@@ -19,11 +19,11 @@ LIB_PATH = '$(CURDIR)/src/$(LIB_NAME)'
 
 OBJ = $(LIB_OBJ) $(APP_OBJ) $(TEST_OBJ)
 
-.PHONY: all library check clean
+.PHONY: all check clean
 
-all: kata
+all: kata checks
 
-kata: checks src/$(LIB_NAME)
+kata: src/$(LIB_NAME)
 	$(CC) $(CFLAGS) $(APP_OBJ) -o $(NAME) -L '$(CURDIR)/src' $(LDFLAGS)
 
 src/$(LIB_NAME): $(OBJ)
