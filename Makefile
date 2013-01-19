@@ -41,5 +41,5 @@ tests/%.o: src/%.c
 clean:
 	rm -rf $(NAME) $(OBJ) src/$(LIB_NAME) checks
 
-check: all
+check: checks
 	./checks
