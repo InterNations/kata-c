@@ -5,3 +5,5 @@ Provides integration for *check* as a unit testing framework.
 
  - Type `make` to build the project
  - Type `make check` to run the tests
+ - Run `./kata` to run the program
+ - Run `./checks` to run the checks
