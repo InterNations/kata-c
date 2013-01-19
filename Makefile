@@ -39,4 +39,5 @@ clean:
 	rm -rf $(NAME) $(OBJ) src/$(LIB_NAME) checks
 
 .PHONY: check
-check:
+check: all
+	./checks
