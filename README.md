@@ -5,8 +5,8 @@ Provides integration for *check* as a unit testing framework. Builds a shared li
 a program binary and a check binary.
 
  - `make` to build the whole project
- - `make kata` to build the kata executable only
- - `make checks` to build project tests
- - `make check` to run the tests
+ - `make kata` to build the kata binary only
+ - `make testsuite` to build the testsuite
+ - `make test` to run the testsuite
  - `./kata` to run the program
- - `./checks` to run the checks
+ - `./testsuite` to run the checks

@@ -7,6 +7,7 @@ LDFLAGS = -l$(NAME)
 APP_SRC =  src/main.c
 APP_OBJ = $(APP_SRC:%.c=%.o)
 
+TEST_NAME = testsuite
 TEST_SRC = tests/check_library.c
 TEST_OBJ = $(TEST_SRC:%.c=%.o)
 TEST_CFLAGS = $(CFLAGS) `pkg-config --cflags check`
@@ -21,7 +22,7 @@ OBJ = $(LIB_OBJ) $(APP_OBJ) $(TEST_OBJ)
 
 .PHONY: all check clean
 
-all: kata checks
+all: $(NAME) $(TEST_NAME)
 
 kata: src/$(LIB_NAME)
 	$(CC) $(CFLAGS) $(APP_OBJ) -o $(NAME) -L '$(CURDIR)/src' $(LDFLAGS)
@@ -29,8 +30,8 @@ kata: src/$(LIB_NAME)
 src/$(LIB_NAME): $(OBJ)
 	$(CC) -dynamiclib -install_name $(LIB_PATH) -current_version 1.0 $(LIB_OBJ) -o src/$(LIB_NAME)
 
-checks: src/$(LIB_NAME)
-	$(CC) $(TEST_CFLAGS) $(TEST_OBJ) -o checks -L '$(CURDIR)/src' $(TEST_LDFLAGS)
+$(TEST_NAME): src/$(LIB_NAME)
+	$(CC) $(TEST_CFLAGS) $(TEST_OBJ) -o $(TEST_NAME) -L '$(CURDIR)/src' $(TEST_LDFLAGS)
 
 src/%.o: src/%.c
 	$(CC) $(CFLAGS) -c $< -o $(<:%.c=%.o)
@@ -39,7 +40,7 @@ tests/%.o: src/%.c
 	$(CC) $(TEST_CFLAGS) -c $< -o $(<:%.c=%.)
 
 clean:
-	rm -rf $(NAME) $(OBJ) src/$(LIB_NAME) checks
+	rm -rf $(NAME) $(OBJ) src/$(LIB_NAME) $(TEST_NAME)
 
-check: checks
-	./checks
+test: $(TEST_NAME)
+	@./$(TEST_NAME)
