@@ -8,7 +8,7 @@ APP_SRC =  src/main.c
 APP_OBJ = $(APP_SRC:%.c=%.o)
 
 TEST_NAME = testsuite
-TEST_SRC = tests/check_library.c
+TEST_SRC = $(wildcard tests/check_*.c)
 TEST_OBJ = $(TEST_SRC:%.c=%.o)
 TEST_CFLAGS = $(CFLAGS) `pkg-config --cflags check`
 TEST_LDFLAGS = $(LDFLAGS) `pkg-config --libs check`
