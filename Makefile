@@ -1,7 +1,9 @@
 NAME = kata
 
-CC      = /usr/bin/gcc
-CFLAGS  = -Wall -strict
+#CC     = gcc
+#CFLAGS = -Wall -strict
+CC      = clang
+CFLAGS  = -g
 LDFLAGS = -l$(NAME)
 
 APP_SRC =  src/main.c
