@@ -6,7 +6,8 @@
 
 void enum_func(const char *key, const char *value, const void *obj) {
 
-	printf("%s\n", value);
+	if (strchr(value, ' ') != NULL)
+		printf("%s\n", value);
 
 }
 

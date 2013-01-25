@@ -15,15 +15,15 @@ int compare (const void * a, const void * b)
 
 void kata_sort_string(char *input) {
 
-	char *input2 = malloc(strlen(input)+1);
+/*	char *input2 = malloc(strlen(input)+1);
 	strcpy(input2, input);
+*/
+	qsort(input, strlen(input), 1, compare);
 
-	qsort(input2, strlen(input2), 1, compare);
-
-	strcpy(input, input2);
+/*	strcpy(input, input2);
 
 	free(input2);
-
+*/
 }
 
 void kata_add_to_strmap(StrMap *map, char *input) {
