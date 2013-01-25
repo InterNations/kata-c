@@ -15,7 +15,7 @@ TEST_OBJ = $(TEST_SRC:%.c=%.o)
 TEST_CFLAGS = $(CFLAGS) `pkg-config --cflags check`
 TEST_LDFLAGS = $(LDFLAGS) `pkg-config --libs check`
 
-LIB_SRC = src/library.c
+LIB_SRC = src/library.c src/strmap.c
 LIB_OBJ = $(LIB_SRC:%.c=%.o)
 LIB_NAME = lib$(NAME).dylib
 LIB_PATH = '$(CURDIR)/src/$(LIB_NAME)'
