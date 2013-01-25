@@ -4,13 +4,6 @@
 #define BUZZ_SIZE 1024
 
 
-void enum_func(const char *key, const char *value, const void *obj) {
-
-	if (strchr(value, ' ') != NULL)
-		printf("%s\n", value);
-
-}
-
 int main(int argc, char *argv[]) {
 
 	char buff[BUZZ_SIZE];
@@ -22,10 +15,13 @@ int main(int argc, char *argv[]) {
 
     FILE *f = fopen(file, "r");
     while (feof(f) == 0) {
+    	size_t size;
+    	char *str;
+
  	    fgets(buff, BUZZ_SIZE, f);
 
- 	    size_t size = strlen(buff)+1;
- 	    char *str = malloc(size-1);
+ 	    size = strlen(buff)+1;
+ 	    str = malloc(size-1);
  	    strncpy(str, buff, size-2);
  	    str[size-2] = '\0';
 
@@ -35,7 +31,7 @@ int main(int argc, char *argv[]) {
 	}
     fclose(f);
 
-    sm_enum(data, enum_func, NULL);
+    sm_enum(data, kata_print_result, NULL);
 
 	sm_delete(data);
 

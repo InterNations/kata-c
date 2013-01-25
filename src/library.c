@@ -1,29 +1,15 @@
 #include <string.h>
 #include <stdlib.h>
 #include <stdio.h>
-#include "../src/strmap.h"
-
-int kata_add(int left, int right) {
-	return left + right;
-}
+#include "strmap.h"
 
 int compare (const void * a, const void * b)
 {
-//	printf("COMPARE");
-  return strcmp(a, b);
+   return strcmp(a, b);
 }
 
 void kata_sort_string(char *input) {
-
-/*	char *input2 = malloc(strlen(input)+1);
-	strcpy(input2, input);
-*/
 	qsort(input, strlen(input), 1, compare);
-
-/*	strcpy(input, input2);
-
-	free(input2);
-*/
 }
 
 void kata_add_to_strmap(StrMap *map, char *input) {
@@ -42,15 +28,20 @@ void kata_add_to_strmap(StrMap *map, char *input) {
 		strcat(val, " ");
 		strcat(val, orig);
 		sm_put(map, input, val);
-	//	printf("%s => %s\n", input, val);
 
 		free(val);
 	}
 	else {
 		sm_put(map, input, orig);
-	//printf("%s => %s\n", input, orig);
 	}
 
 	free(orig);
 
+}
+
+void kata_print_result(const char *key, const char *value, const void *obj) {
+
+	if (strchr(value, ' ') != NULL) {
+		printf("%s\n", value);
+	}
 }
