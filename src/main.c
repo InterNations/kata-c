@@ -6,11 +6,11 @@
 
 int main(int argc, char *argv[]) {
 
-	char buff[BUZZ_SIZE];
+	char buff[BUZZ_SIZE], file;
 
-	StrMap *data = sm_new(1000);
+	StrMap *data = sm_new(10000);
 
-	char *file = argv[1];
+	file = argv[1];
 	printf("using %s\n", file);
 
     FILE *f = fopen(file, "r");

@@ -90,22 +90,6 @@ START_TEST(test_kata_anagrams2)
 }
 END_TEST
 
-START_TEST(test_kata_print_result)
-{
-
-	StrMap *data = sm_new(100);
-/*
-	sm_put(data, "hiiknps", "kinship");
-
-	kata_print_result(const char *key, const char *value, const void *obj);
-*/
-	fail_unless(sm_exists(data, "hiiknps") == 1, "Hash map works not");
-
-	sm_delete(data);
-
-}
-END_TEST
-
 Suite *kata_suite(void) {
 	Suite *suite;
 	TCase *test_case;
@@ -115,7 +99,6 @@ Suite *kata_suite(void) {
 	tcase_add_test(test_case, test_kata_sort_string);
 	tcase_add_test(test_case, test_kata_anagrams);
 	tcase_add_test(test_case, test_kata_anagrams2);
-	tcase_add_test(test_case, test_kata_print_result);
 	suite_add_tcase(suite, test_case);
 
 	return suite;

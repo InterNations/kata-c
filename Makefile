@@ -4,7 +4,7 @@ NAME = kata
 #CFLAGS = -Wall -strict -ansi -pedantic
 #CFLAGS = -O4 -funroll-all-loops
 CC      = clang
-CFLAGS  = -g -pedantic -O4
+CFLAGS  = -g -pedantic
 LDFLAGS = -l$(NAME)
 
 APP_SRC =  src/main.c
